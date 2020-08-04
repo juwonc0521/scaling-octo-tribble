@@ -1,0 +1,11 @@
+const node = await IPFS.create()
+
+const stream = node.cat('QmX5S9LghW4BeiqnUTeQCTVS1tu84kbUzbbMbpvwzA2gwh')
+let data = ''
+
+for await (const chunk of stream) {
+  // chunks of data are returned as a Buffer, convert it back to a string
+  data += chunk.toString()
+}
+
+console.log(data)
